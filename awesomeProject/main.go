@@ -3,14 +3,23 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
-	s, sep := "", ""
+	/*s, sep := "", ""
 	for _, arg := range os.Args[1:] {
 		s += sep + arg
 		sep = " "
 		break
-	}
-	fmt.Println(s)
+	}*/
+
+	/*
+		s := ""
+		var s string
+		var s = ""
+		var s string = ""
+	*/
+	fmt.Println(strings.Join(os.Args[1:], " "))
+	//fmt.Println(s)
 }
