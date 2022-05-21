@@ -19,6 +19,7 @@ func main() {
 		var s = ""
 		var s string = ""
 	*/
-	fmt.Println(os.Args[1:])
+	fmt.Println(0, " ", os.Args[0])
+	fmt.Println(1, " ", os.Args[1:])
 	//fmt.Println(s)
 }
