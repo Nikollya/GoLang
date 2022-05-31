@@ -1,23 +1,26 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 )
+
+var in = bufio.NewReader(os.Stdin)
 
 func main() {
 	var n int
-	var s string
+	var st string
 	fmt.Scan(&n)
 	m := make(map[string]int)
 	for i := 0; i < n; i++ {
-		fmt.Scan(&s)
-		if m[s] == 0 {
+		fmt.Fscan(in, &st)
+		if m[st] == 0 {
 			fmt.Println("OK")
-			m[s] = 1
+			m[st] = 1
 		} else {
-			fmt.Print(s, m[s])
-			fmt.Println()
-			m[s]++
+			fmt.Printf("%s%d\n", st, m[st])
+			m[st]++
 		}
 	}
 }
