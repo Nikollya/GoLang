@@ -5,25 +5,24 @@ import (
 	"fmt"
 )
 
-func read() (int, string) {
+func read() string {
 	var x string
 	fmt.Println("Write number of card!")
 	fmt.Scan(&x)
-	n := len(x)
-	return n, x
+	return x
 }
-func checkNumberOfCard(n int, a string) (bool, error) {
-	if n != 16 {
+func checkNumberOfCard(a string) (bool, error) {
+	if len(a) != 16 {
 		return false, errors.New("error: 01")
 	}
-	for i := 0; i < n; i++ {
+	for i := 0; i < len(a); i++ {
 		if a[i] < '0' || a[i] > '9' {
 			return false, errors.New("error: 2")
 		}
 	}
 	sum := 0
 	x := 0
-	for i := n - 1; i >= 0; i-- {
+	for i := len(a) - 1; i >= 0; i-- {
 		if i%2 == 0 {
 			if int(a[i]-'0')*2 > 9 {
 				x = int(a[i]-'0') * 2
@@ -44,8 +43,9 @@ func checkNumberOfCard(n int, a string) (bool, error) {
 }
 
 func main() {
-	n, a := read()
-	card, err := checkNumberOfCard(n, a)
+	//a := read()
+	a := "5168441223630339"
+	card, err := checkNumberOfCard(a)
 	if card {
 		fmt.Println("your card have accepted")
 	} else {
