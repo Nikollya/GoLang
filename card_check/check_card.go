@@ -12,13 +12,13 @@ func read() (int, string) {
 	n := len(x)
 	return n, x
 }
-func checkNumberOfCard(n int, a string) error {
+func checkNumberOfCard(n int, a string) (bool, error) {
 	if n != 16 {
-		return errors.New("error: 01")
+		return false, errors.New("error: 01")
 	}
 	for i := 0; i < n; i++ {
 		if a[i] < '0' || a[i] > '9' {
-			return errors.New("error: 2")
+			return false, errors.New("error: 2")
 		}
 	}
 	sum := 0
@@ -38,15 +38,19 @@ func checkNumberOfCard(n int, a string) error {
 		}
 	}
 	if sum%10 != 0 {
-		return errors.New("error: 03")
+		return false, errors.New("error: 03")
 	}
-	return errors.New("your card have accepted")
+	return true, nil
 }
 
 func main() {
 	n, a := read()
-	err := checkNumberOfCard(n, a)
-	fmt.Println(err)
+	card, err := checkNumberOfCard(n, a)
+	if card {
+		fmt.Println("your card have accepted")
+	} else {
+		fmt.Println(err)
+	}
 	return
 }
 
